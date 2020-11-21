@@ -42,3 +42,6 @@
       repo: https://github.com/Mstienei/yolo.git
       dest: /opt/yolo
     when: not repo_stat.stat.exists
+
+  - name: run docker compose to deploy containers
+    shell: "docker-compose -f /opt/yolo/docker-compose.yml up -d"
