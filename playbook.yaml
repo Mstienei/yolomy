@@ -34,11 +34,11 @@
     shell: "usermod -aG docker $USER"
     
   - name: Check if the git repository exists
-    stat: path=/yolomy/yolo
+    stat: path=/opt/yolo
     register: repo_stat
 
   - name: Fetch the mstienei/yolo GitHub repository
     git:
       repo: https://github.com/Mstienei/yolo.git
-      dest: /yolomy/yolo
+      dest: /opt/yolo
     when: not repo_stat.stat.exists
