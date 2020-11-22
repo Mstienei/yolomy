@@ -1,0 +1,13 @@
+---
+  - name: Check if the git repository exists
+    stat: path=/opt/yolo
+    register: repo_stat
+
+  - name: Fetch the mstienei/yolo GitHub repository
+    git:
+      repo: https://github.com/Mstienei/yolo.git
+      dest: /opt/yolo
+    when: not repo_stat.stat.exists
+
+  - name: run docker compose to deploy containers
+    shell: "docker-compose -f /opt/yolo/docker-compose.yml up -d"
