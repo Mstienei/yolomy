@@ -1,0 +1,11 @@
+---
+- hosts: all
+  remote_user: vagrant
+  become: yes
+  pre_tasks:
+  - name: Update apt cache if needed
+    apt: "update_cache=yes cache_valid_time=14400"
+
+  roles:
+    - prerequisites
+    - containerization
