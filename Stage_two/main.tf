@@ -14,6 +14,11 @@ provider "aws" {
 resource "aws_instance" "yolomy" {
   ami           = "ami-830c94e3"
   instance_type = "t2.micro"
+
+provisioner "file" {
+  source      = "/moringa/yolomy"
+  destination = "/opt/yolomy"
+}
 }
 resource "aws_security_group" "instance" {
   name = "yolomy-instance"
